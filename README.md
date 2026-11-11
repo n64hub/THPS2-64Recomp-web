@@ -1,3 +1,18 @@
+> [!WARNING]
+> **This is n64hub/THPS2-64Recomp-web, a fork, not THPS2 64: Recompiled.** Its `main` branch builds the game into a
+> web page (WebGPU, through [N64Recomp-browser](https://github.com/n64hub/N64Recomp-browser)), with the shared host
+> `decomp/common` on [THPS64Host-web](https://github.com/n64hub/THPS64Host-web), and everything on those branches past
+> upstream's commits was written by AI (Claude). It is not made, endorsed or supported by THPS64Recomp: nothing here is
+> offered upstream, and please don't take issues with this fork to them. Building the page:
+> [BUILDING.md](BUILDING.md#the-web-page).
+>
+> This port is here to build out and test N64Recomp-browser's web support on another game than the ones it was written
+> for: what it turns up is fixed there where it can be, so every recomp's page gets the fix.
+
+**Play it in the browser: https://n64hub.com/tony-hawks-pro-skater-2/**, with your own Tony Hawk's Pro Skater 2 ROM
+(USA), picked when the page asks for it and kept in the browser. It needs WebGPU (Chrome or Edge 113 and up). Esc
+opens the settings, as on the desktop.
+
 # THPS2 64: Recompiled
 
 A native PC port of *Tony Hawk's Pro Skater 2* for the Nintendo 64, for macOS and Windows. Built with

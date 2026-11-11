@@ -1,3 +1,6 @@
 [submodule "decomp/common"]
 	path = decomp/common
-	url = https://github.com/THPS64Recomp/THPS64Host.git
+	url = https://github.com/n64hub/THPS64Host-web.git
+[submodule "lib/N64Recomp-browser"]
+	path = lib/N64Recomp-browser
+	url = https://github.com/n64hub/N64Recomp-browser

@@ -77,6 +77,30 @@ setting up its own. (Without it, `check.sh` reuses the runtime of your last buil
 Releases are packaged from the split build with `decomp/common/host/tools/package_split.py`. The release workflow in
 `.github/workflows/release.yml` shows the exact steps.
 
+## The web page
+
+This fork's `main` also builds the game into a web page that draws through WebGPU, with the web support of the
+[N64Recomp-browser](https://github.com/n64hub/N64Recomp-browser) tag `lib/N64Recomp-browser` pins. On Linux, with emsdk
+active, `naga` and `spirv-opt` on `PATH` (N64Recomp-browser's README, Using it in a recomp), clang, CMake, Ninja, git and
+Python 3.11+:
+
+```sh
+bash tools/build_web.sh <your USA dump>              # the page, at -O3
+bash tools/build_web.sh <your USA dump> --fast-link  # linked at -O1, in seconds: not for a page people play
+bash tools/build_web.sh --patches                    # the runtime and its patches alone, no dump (CI's thps2-patches job)
+```
+
+The page is `decomp/thps2/recomp-host/build/web/thps2_recomp.html`, `.js`, `.wasm` and `.data`, with
+`coi_serviceworker.js` beside it. Its `.data` holds the settings menu's documents and fonts and nothing of the game: the
+player picks their own dump when the page asks for it, and the page keeps it in the browser. Serve the folder with
+`Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp`, or from a host that sets
+none, where `coi_serviceworker.js` adds them. The shared host's `host/tools/build_web.py` does the work, and its header
+says how; the host's web changes are all behind `__EMSCRIPTEN__`, so a desktop build is as it was.
+
+The page builds its RT64 shaders from a prebuilt list, `decomp/thps2/recomp-host/web/rt64_shaders.txt`, recorded with
+N64Recomp-browser's `tools/record_shaders.mjs` from `tools/shader_plan.json` (the list's header says what was played and
+what not), and `tools/play_plan.json` is its regular play for N64Recomp-browser's `tools/play_page.mjs`.
+
 ## Runtime setup
 
 `setup_runtime.py` fetches the pinned upstream sources into a folder of your choice and applies our patches in a fixed
