@@ -97,6 +97,12 @@ player picks their own dump when the page asks for it, and the page keeps it in 
 none, where `coi_serviceworker.js` adds them. The shared host's `host/tools/build_web.py` does the work, and its header
 says how; the host's web changes are all behind `__EMSCRIPTEN__`, so a desktop build is as it was.
 
+The page runs without RT64's render to RAM (the host's `host/src/rt64_context.cpp`): the game's CPU never reads a frame
+the RDP drew, nor draws into one. Its fades, overlays and pause backgrounds are display-list commands, its framebuffer
+addresses go only into display lists and the scheduler's compares, and the loader's unpack blocks in the Z buffer wait
+for every graphics task and read back only what the loader wrote. On a page each copy waits 5-6 ms for the browser's
+readback. The desktop build keeps it, since the host's test tools read finished frames from RDRAM.
+
 The page builds its RT64 shaders from a prebuilt list, `decomp/thps2/recomp-host/web/rt64_shaders.txt`, recorded with
 N64Recomp-browser's `tools/record_shaders.mjs` from `tools/shader_plan.json` (the list's header says what was played and
 what not), and `tools/play_plan.json` is its regular play for N64Recomp-browser's `tools/play_page.mjs`.
