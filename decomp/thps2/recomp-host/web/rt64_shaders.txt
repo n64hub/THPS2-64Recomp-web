@@ -6,8 +6,9 @@
 # to the run (gRunActive, 0x800DBF70, is 1), about 25 s of skating, ollies, a flip and a grab, and the pause menu. Then
 # tools/play_plan_extended.json (The Hangar, END RUN to the level select, NY City and Venice Beach), played from the page
 # in Chrome on a fresh profile at 3840 wide, missed one, a 2D shader it drew in The Hangar in one run and in Venice Beach
-# in another, added to section 0. Played by neither: the title's demo, 2 PLAYER, Create-a-Skater, the park editor, the
-# options and a run that ends by its clock; a shader they need that the list lacks draws with the ubershader in Chrome
+# in another, added to section 0, and one a run that reached the title's demo drew there, added to section 0 too. Played by
+# neither: the rest of the title's demo, 2 PLAYER, Create-a-Skater, the park editor, the options and a run that ends by its
+# clock; a shader they need that the list lacks draws with the ubershader in Chrome
 # until it is built behind the game, and in Firefox it is built before the next frame and remembered for the next visit.
 00504240 00082c1f fcffffff fffdf6fb 0800000b
 0c184240 00102c1f fcffffff ff09f63f 0003540b
@@ -24,6 +25,7 @@
 0c183078 0018ac1f fc127e44 fffff238 0ccb540e
 0c192078 00182c1f fc17fe09 52fef2b8 0ccb540e
 00504340 0008ac1f fcffffff fffdf6fb 0800000b
+0c192078 0018ac1f fc127e44 fffff238 099b100e
 section hangar
 c8103078 00182c1f fc50ffff fffff238 0ccb540e
 c8103078 0018ac1f fc127e44 fffff238 0ccb540e
