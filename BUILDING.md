@@ -105,7 +105,12 @@ readback. The desktop build keeps it, since the host's test tools read finished 
 
 The page builds its RT64 shaders from a prebuilt list, `decomp/thps2/recomp-host/web/rt64_shaders.txt`, recorded with
 N64Recomp-browser's `tools/record_shaders.mjs` from `tools/shader_plan.json` (the list's header says what was played and
-what not), and `tools/play_plan.json` is its regular play for N64Recomp-browser's `tools/play_page.mjs`.
+what not), with what the extended plan missed added. `tools/play_plan.json` is its regular play for N64Recomp-browser's
+`tools/play_page.mjs`, 2-3 minutes: the menus to The Hangar and 80 s there. `tools/play_plan_extended.json`, about 5
+minutes, starts the same and goes on to NY City and Venice Beach, ending each run from the pause menu and picking the
+next course in the level select as a player does. A new career has only The Hangar open, so it first writes 1 to the
+game's own all-levels word, which the level select reads, and each run's start checks the course the game is playing.
+Each plan's header has the rest.
 
 ## Runtime setup
 
